@@ -1,0 +1,3 @@
+fp9.csv was generated using Slippi files sourced from the Slippi Discord channel using the !replaydumps command as of November 2, 2019.
+
+All data is viewable on slippi.gg
