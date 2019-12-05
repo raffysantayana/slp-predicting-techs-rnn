@@ -33,13 +33,13 @@ In this project, I will be only looking at 1v1 tournament legal matches. The cri
 In a 1v1 match, players are limited to defeat their opponent with nothing more than the abilities of themselves as a player and the abilities of their selected character. Characters have various moves such as jabs, smash attacks, tilt attacks, special attacks, grabs, and aerial attacks. Most of these attacks have slight variations of themselves, but at different directions. When a player strikes their opponent with an attack, then the opponent's damage percentage goes up.
 <p align = "center">
   <img src="images/damage-example.gif"/>
-  <center>Fox Damaging Falco</center>
+  <b>Fox Damaging Falco</b>
 </p>
 
 As a character's damage increases, then the distance at which they are launched after a hit then increases. This is beneficial as an opponent because the further they travel for each hit, then it should be easier to push them through a blast zone and have them lose a stock. Once a character loses all their stocks, then the other player is determined the winner. If a timeout occurs, then the player with the most stocks and least damage wins. In the case that those are tied as well, then a rematch is played with each charcter getting one stock.
 <p align = "center">
   <img src="images/GAME.gif"/>
-  <center>Jigglypuff Defeating Fox's Last Stock; Winning the Game</center>
+  <b>Jigglypuff Defeating Fox's Last Stock; Winning the Game</b>
 </p>
 
 ### A Primer on Fighting Games
