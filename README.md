@@ -38,7 +38,7 @@ In a 1v1 match, players are limited to defeat their opponent with nothing more t
 
 As a character's damage increases, then the distance at which they are launched after a hit then increases. This is beneficial as an opponent because the further they travel for each hit, then it should be easier to push them through a blast zone and have them lose a stock. Once a character loses all their stocks, then the other player is determined the winner. If a timeout occurs, then the player with the most stocks and least damage wins. In the case that those are tied as well, then a rematch is played with each charcter getting one stock.
 <p align = "center">
-  <img src="images/GAME.gif"/>
+  <img src="images/GAME.gif"/><br>
   <b>Jigglypuff Defeating Fox's Last Stock; Winning the Game</b>
 </p>
 
@@ -50,8 +50,8 @@ The idea of mixups is another common thread among fighting games. One of the mos
 
 In Melee, when a character is launched towards the floor, wall, or ceiling, then they have the option to tech. When a player is hit and placed in a situation where they must decide whether to tech in-place, tech-roll left, or tech-roll right, they may miss the 20 frame window and not tech. This will cause them to stay vulnerable on the ground with few options to retaliate. However, like stated before, this is a mixup. If a player frequently techs to the right, then their opponent will be accustomed to that behavior. So whenever the the opponent sees that the player has the option to tech, then they will assume the player will tech right and adjust the combo. If the player suddenly techs in-place and the opponent did not expect that, then the player has recovered safely and is free to move. This process is known as tech chasing - the opponent is tech-chasing the player.
 <p align = "center">
-  ![tech-chasing](images/tech-chase.gif)
-  <center>Captain Falcon tech-chasing Fox McCloud</center>
+  <img src="images/tech-chase.gif"/><br>
+  <b>Captain Falcon tech-chasing Fox McCloud</b>
 </p>
 
 
