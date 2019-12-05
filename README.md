@@ -63,7 +63,7 @@ To begin, I considered constructing a script that would scrape [Slippi's site](h
 
 <a id='parse'></a>
 ### Parsing Data
-With the data in hand, I used the `slippi` library to read in each file as a Slippi's own Game object. Game objects have attributes whose values are sometimes other objects. Since each Slippi file has the same structure, I created a function `metadata_to_df` to parse the metadata of each game. The objective here is to filter the games as needed. For example, I want 1v1 games, so I can filter for games where the team battle option is set to off.
+With the data in hand, I used the `slippi` library to read in each file as a Slippi's own Game object. Game objects have attributes whose values are sometimes other objects. Since each Slippi file has the same structure, I created a function `metadata_to_df` and `frames_to_df` to parse the metadata of each game. The objective here is to filter the games as needed. For example, I want 1v1 games, so I can filter for games where the team battle option is set to off.
 
 <a id = 'modeling'></a>
 ### Modeling
@@ -80,13 +80,28 @@ Since every frame of a game contains multiple features that can be used as input
 I could use AWS cloud computing to perform the task, but the machine's that were noticeably stronger than my machine cost too much for me at the moment.
 
 ## Conclusions and Future Work
+
 <p align = "center">
-  <img src="images/model0.png"><br>
+  <img src="images/model.png"><br>
   <b>Categorical Cross Entropy Per Epoch</b>
 </p>
 
-The loss on the training sequence is [LOSS HERE] and the loss on the validation sequence is [VAL_LOSS HERE]. This tells me that my model is overfit. Considering that my baseline accuracy score is 96.63% and my model has a training accuracy of [ACCURACY HERE] and a test accuracy of [VAL_ACCURACY HERE], I have a model that is better at predicting Fox's wake-up behavior than randomly guessing his action state. However, it is important to note that the reason that the accuracy score is so high is because majority of the target values are 0's. These 0's represent frames in which Fox is in an action state that does not signify whether he is teching or missing a tech. For example, Fox could be standing, jumping, or attacking.
+---
 
-With this in mind I will disregard regularization for now because there is not need to improve this model unless the data that is fed into the model has the useless noise removed. This can be done by locating the frames in which a missed tech, tech in place, tech roll left, or tech roll right is detected. Then I will go back 120 frames and label them as important sequences where 120 is the amount of sequential frames I want to feed to the RNN. By doing this, I can drop the frames that are not labeled as important. This way, I only retain frames that lead up to a wake-up situation.
+<p align = "center">
+  <b>Loss and accuracy scores after fitting model</b>
+</center>
 
-Another problem in the model is that since the input is a series of games, when the end of one game is reached and the frames of the next game is fed to the model, then frames from the previous game is fed as part of the sequence of the beginning of the next game. I believe this can be fixed by placing "forget gates" in the GRU layers. If what I understand of these gates is correct, then these gates they will cause the GRU to forget the memory of the previous game and begin learning the sequences of the next game.
+| Train Loss | Test Loss | Baseline Accuracy | Train Accuracy | Test Accuracy |
+|:----------:|:---------:|:-----------------:|:--------------:|:-------------:|
+|   0.0091   |   0.0186  |       96.63%      |     99.76%     |     99.63%    |
+
+After fitting the model, the loss on the training sequence is 0.0091 and the loss on the validation sequence is 0.0186. This tells me that my model is overfit because the categorical crossentropy of the training sequences is less than the categorical crossentropy of the testing sequences (validation data). This can also be seen when looking at the train and test accuracies. Considering that my baseline accuracy score is 96.63% and my model has a training accuracy of 99.76% and a test accuracy of 99.63%, I have a model that is better at predicting Fox's tech behavior than randomly guessing. However, it is important to note that the reason that the accuracy score is so high is because majority of the target values are 0's. These 0's represent frames in which Fox is in an action state that does not signify whether he is teching or missing a tech. For example, Fox could be standing, jumping, or attacking.
+
+I would also like to point out the behavior of the test loss. One will notice that the categorical crossentropy at the end of fitting barely shows a difference compared to the categorical crossentropy at the beginning of fitting. This tells me that the training does not have much of an affect on the testing. I believe this is because there is so much random noise for the model to train on that it does not help it predict unseen data at all. So the further versions of this product will need to programmatically find the useful frames that can explain a Fox player's tech habits.
+
+With this in mind I will disregard regularization for now because there is no need to improve this model unless the data that is fed into the model has the useless noise removed. This can be done by locating the frames in which a missed tech, tech in place, tech roll left, or tech roll right is detected. Then I will go back 120 frames and label them as important sequences where 120 is the amount of sequential frames I want to feed to the RNN. By doing this, I can drop the frames that are not labeled as important. This way, I only retain frames that lead up to a wake-up situation. When creating this function, I will also need to construct multiple models that take in sequences of different lengths. I will create models that label 120 frames to 300 frames in 30 frame intervals. In units of seconds, 2 seconds to 5 seconds in 0.5 second intervals. Then for each interval, I will fit a model and determine which number of sequential frames is enough to train a model.
+
+Another problem in the model is the data that is being fed as input. As mentioned before, the data is being inputted as one large sequence of frames. Similar to taping 13 different movie film reels together, we are "taping" 13 different games together for the model to interpret as one large game. This will cause a problem because when the model begins to interpret the frames that are "taped" together, then it will take the history of the previous, independent game and assume it will have an affect on the current game. This is not true at all. To deal with this, I will do research on various types of gates that can be applied to Long Short Term Memory (LSTM) or [GRU] (GRU). From the quick research that I have done, with thanks to Tom Ludlow, I believe the answer is a gate that will allow the recurrent layer to forget the sequences once a new game is being interpretted. By doing so, the model can continue learning without data from previous games leaking through others.
+
+Not quite a limitation, but I found it slightly difficult to truest the [documentation](https://py-slippi.readthedocs.io/en/latest/py-modindex.html) on the python Slippi parser. The values that the documentation explains is not 100% in line with the values that were found in the Fight Pitt 9 Slippi files. When parsing the metadata in the first notebook, warnings occurred that notified us about unknown values in the files. In addition to that, all values for the platform the games were played on shows NINTENDONT. However, this value is not shown in the documentation. If it was not for the Slippi Discord community showing me the [general action states](https://docs.google.com/spreadsheets/d/1JX2w-r2fuvWuNgGb6D3Cs4wHQKLFegZe2jhbBuIhCG8/preview#gid=13) and [character unique action states](https://docs.google.com/spreadsheets/d/1Nu3hSc1U6apOhU4JIJaWRC4Lj0S1inN8BFsq3Y8cFjI/preview), I would not be able to confidently interpret Fox and Falco's action states. I will need to communicate further with the contributors of Slippi to be able to more confidently feed the model accurate values.
