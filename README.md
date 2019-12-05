@@ -78,3 +78,15 @@ When parsing the metadata and frame data from each game, it took a considerable 
 Since every frame of a game contains multiple features that can be used as inputs to the RNN, there is a lot of data to deal with. If a single game lasts for a minute, then that is 3600 frames (60 seconds * 60 frames per second). Each frame contains 333 features after cleaning and dummying. In short, a lot of power is needed to be able to fit the neural network quickly.
 
 I could use AWS cloud computing to perform the task, but the machine's that were noticeably stronger than my machine cost too much for me at the moment.
+
+## Conclusions and Future Work
+<p align = "center">
+  <img src="images/model0.png"><br>
+  <b>Categorical Cross Entropy Per Epoch</b>
+</p>
+
+The loss on the training sequence is [LOSS HERE] and the loss on the validation sequence is [VAL_LOSS HERE]. This tells me that my model is overfit. Considering that my baseline accuracy score is 96.63% and my model has a training accuracy of [ACCURACY HERE] and a test accuracy of [VAL_ACCURACY HERE], I have a model that is better at predicting Fox's wake-up behavior than randomly guessing his action state. However, it is important to note that the reason that the accuracy score is so high is because majority of the target values are 0's. These 0's represent frames in which Fox is in an action state that does not signify whether he is teching or missing a tech. For example, Fox could be standing, jumping, or attacking.
+
+With this in mind I will disregard regularization for now because there is not need to improve this model unless the data that is fed into the model has the useless noise removed. This can be done by locating the frames in which a missed tech, tech in place, tech roll left, or tech roll right is detected. Then I will go back 120 frames and label them as important sequences where 120 is the amount of sequential frames I want to feed to the RNN. By doing this, I can drop the frames that are not labeled as important. This way, I only retain frames that lead up to a wake-up situation.
+
+Another problem in the model is that since the input is a series of games, when the end of one game is reached and the frames of the next game is fed to the model, then frames from the previous game is fed as part of the sequence of the beginning of the next game. I believe this can be fixed by placing "forget gates" in the GRU layers. If what I understand of these gates is correct, then these gates they will cause the GRU to forget the memory of the previous game and begin learning the sequences of the next game.
