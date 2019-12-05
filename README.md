@@ -63,7 +63,7 @@ To begin, I considered constructing a script that would scrape [Slippi's site](h
 
 <a id='parse'></a>
 ### Parsing Data
-With the data in hand, I used the `slippi` library to read in each file as a Slippi's own Game object. Game objects have attributes whose values are sometimes other objects. Since each Slippi file has the same structure, I created a function `metadata_to_df` to parse the metadata of each game. The objective here is to filter the games as needed. For example, I want 1v1 games, so I can filter for games where the team battle option is set to off.
+With the data in hand, I used the `slippi` library to read in each file as a Slippi's own Game object. Game objects have attributes whose values are sometimes other objects. Since each Slippi file has the same structure, I created a function `metadata_to_df` and `frames_to_df` to parse the metadata of each game. The objective here is to filter the games as needed. For example, I want 1v1 games, so I can filter for games where the team battle option is set to off.
 
 <a id = 'modeling'></a>
 ### Modeling
@@ -86,6 +86,7 @@ I could use AWS cloud computing to perform the task, but the machine's that were
   <b>Categorical Cross Entropy Per Epoch</b>
 </p>
 
+---
 
 <p align = "center">
   <b>Loss and accuracy scores after fitting model</b>
