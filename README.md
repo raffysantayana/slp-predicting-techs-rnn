@@ -32,7 +32,7 @@ In this project, I will be only looking at 1v1 tournament legal matches. The cri
 
 In a 1v1 match, players are limited to defeat their opponent with nothing more than the abilities of themselves as a player and the abilities of their selected character. Characters have various moves such as jabs, smash attacks, tilt attacks, special attacks, grabs, and aerial attacks. Most of these attacks have slight variations of themselves, but at different directions. When a player strikes their opponent with an attack, then the opponent's damage percentage goes up.
 <p align = "center">
-  <img src="images/damage-example.gif"/>
+  <img src="images/damage-example.gif"/><br>
   <b>Fox Damaging Falco</b>
 </p>
 
