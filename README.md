@@ -79,6 +79,11 @@ Since every frame of a game contains multiple features that can be used as input
 
 I could use AWS cloud computing to perform the task, but the machine's that were noticeably stronger than my machine cost too much for me at the moment.
 
+### Codebooks
+1. [Parsing Fight Pitt 9 Metadata](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/01%20-%20Parsing%20Fight%20Pitt%209%20MetaData.ipynb)
+2. [Parsing Frame Data](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/02%20-%20Parsing%20Frame%20Data.ipynb)
+3. [RNN](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/03%20-%20RNN%20Fitting.ipynb)
+
 ## Conclusions and Future Work
 
 <p align = "center">
