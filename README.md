@@ -3,10 +3,10 @@
 
 Note: For those unfamiliar with Super Smash Bros., I encourage you to read the [context](#context) section.
 
-#### Some Quick Background Info
+#### _Some Quick Background Info_
 Fox versus Falco is a frequent match in competitive Melee. Discussions about whether Fox or Falco have the upperhand in the matchup is a popular debate among players. I believe that among today's top ranked players in the world, Fox will most likely win because of his faster speed over Falco. However, Falco is more likely to win against newer players because he is able to utilize different tools to disrupt Fox's momentum; something that new players may struggle to overcome.
 
-#### Exact Problem Statement
+#### _Exact Problem Statement_
 Since Falco is often one of the first major hurdles for new players to defeat, I hope to construct a coaching tool that will help them overcome this. The final product will use a collection of Slippi games as input and provide summary statistics on the games. For coaching tools of the product, a player can feed in a collection of Slippi games to learn how a specified player and character plays. Then this will create an AI that someone can battle. This is useful for those who wish to practice against a live player, but does not have immediate access to others. A similar idea to how Super Smash Bros. Wii U utilized [Amiibos](https://www.youtube.com/watch?v=uOnLcVOvrEE). As a quick check to see how feasible this project is, I will train a recurrent neural network on a series of games to see how well the network can learn Fox's wake-up behavior.
 <p align = "center">
   <img src="images/melee-wallpaper.jpg" alt="Drawing" style="width: 600px;"/>
@@ -14,7 +14,7 @@ Since Falco is often one of the first major hurdles for new players to defeat, I
 
 <a id='context'></a>
 ## Context
-#### Further Background Info
+#### _Further Background Info_
 <a id='why'></a>
 ### Why Super Smash Bros.?
 
@@ -59,8 +59,8 @@ In Melee, when a character is launched towards the floor, wall, or ceiling, then
 
 
 <a id='executive'></a>
-#### How Am I Tackling the Problem Statement?
-#### My Process Through the Data Science Workflow?
+#### _How Am I Tackling the Problem Statement?_
+#### _My Process Through the Data Science Workflow?_
 ## Executive Summary
 <a id = 'gather'></a>
 ### Data Gathering
@@ -75,7 +75,7 @@ With the data in hand, I used the `slippi` library to read in each file as a Sli
 Once I have filtered the games I will use as input, I will then create another function to parse the Frame objects of each game. Each Frame object contains information of each frame within the game such as character position and controller inputs. These values will be fed to a recurrent neural network (RNN). The RNN will have a simple topology of a single hidden layer. This is because I am interested to see how well the RNN can learn the players behavior the least amount of complexity possible. If the results were not much better than the baseline accuracy score, then I would increase the complexity of the topology, but cannot due to the below limitations.
 
 <a id = 'limitatdoesnotexist'></a>
-#### What Prevented Me From Achieving What I Wanted?
+#### _What Prevented Me From Achieving What I Wanted?_
 ### Limitations
 tl;dr Power and money.
 
@@ -90,8 +90,8 @@ I could use AWS cloud computing to perform the task, but the machine's that were
 2. [Parsing Frame Data](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/02%20-%20Parsing%20Frame%20Data.ipynb)
 3. [RNN](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/03%20-%20RNN%20Fitting.ipynb)
 
-#### I Put Them All In One Section
-#### Or You Could Split Them Up
+#### _I Put Them All In One Section_
+#### _Or You Could Split Them Up_
 ## Conclusions and Future Work
 
 <p align = "center">
