@@ -59,9 +59,9 @@ In Melee, when a character is launched towards the floor, wall, or ceiling, then
 
 
 <a id='executive'></a>
+## Executive Summary
 #### _How Am I Tackling the Problem Statement?_
 #### _My Process Through the Data Science Workflow?_
-## Executive Summary
 <a id = 'gather'></a>
 ### Data Gathering
 To begin, I considered constructing a script that would scrape [Slippi's site](https://slippi.gg) for games that occured during a tournament using the library `selenium`. I opted not to do this because the official Slippi Discord channel has the `!replaydumps` chat command that provides a download link to Slippi files from [Fight Pitt 9](https://smash.gg/tournament/fight-pitt-9-1/details), [Full Bloom 5](https://smash.gg/tournament/full-bloom-5/details), [The Gang Steals the Script](https://smash.gg/tournament/the-gang-steals-the-script/details), and [Pound 2019](https://smash.gg/tournament/pound-2019/details). The source of the data is on a different platform, but each are controlled by the creators and major contributors to the project such as [Fizzi](https://twitter.com/Fizzi36).
@@ -90,10 +90,9 @@ I could use AWS cloud computing to perform the task, but the machine's that were
 2. [Parsing Frame Data](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/02%20-%20Parsing%20Frame%20Data.ipynb)
 3. [RNN](https://github.com/raffysantayana/slp-predicting-techs-rnn/blob/master/code/03%20-%20RNN%20Fitting.ipynb)
 
+## Conclusions and Future Work
 #### _I Put Them All In One Section_
 #### _Or You Could Split Them Up_
-## Conclusions and Future Work
-
 <p align = "center">
   <img src="images/model.png"><br>
   <b>Categorical Cross Entropy Per Epoch</b>
