@@ -12,7 +12,6 @@ Since Falco is often one of the first major hurdles for new players to defeat, I
 
 <a id='context'></a>
 ## Context
-#### _Further Background Info_
 <a id='why'></a>
 ### Why Super Smash Bros.?
 
